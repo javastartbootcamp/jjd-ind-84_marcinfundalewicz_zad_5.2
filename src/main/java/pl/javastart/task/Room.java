@@ -6,9 +6,10 @@ public class Room {
     private boolean climaMounted;
     private double criticTemperature;
 
-    public Room(double metricAre, double currentTemperature, boolean climaMounted) {
+    public Room(double metricAre, double currentTemperature, double criticTemperature, boolean climaMounted) {
         this.metricAre = metricAre;
         this.currentTemperature = currentTemperature;
+        this.criticTemperature = criticTemperature;
         this.climaMounted = climaMounted;
     }
 
@@ -45,7 +46,11 @@ public class Room {
     }
 
     boolean reduceTemperature() {
-        if (climaMounted == true && currentTemperature > 21 && currentTemperature > getCriticTemperature()) {
+        if (climaMounted && currentTemperature > getCriticTemperature()) {
+            setCurrentTemperature(getCurrentTemperature() - 1);
+            return true;
+        } else if (climaMounted && currentTemperature > getCriticTemperature() && currentTemperature == 21) {
+            setCurrentTemperature(21);
             return true;
         } else {
             return false;
