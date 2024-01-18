@@ -14,8 +14,11 @@ public class Room {
     }
 
     boolean reduceTemperature() {
-        if (climaMounted && currentTemperature > criticTemperature) {
+        if (climaMounted && currentTemperature > criticTemperature && currentTemperature - criticTemperature > 1) {
             currentTemperature = currentTemperature - 1;
+            return true;
+        } else if (climaMounted && currentTemperature > criticTemperature) {
+            currentTemperature = currentTemperature - (currentTemperature - criticTemperature);
             return true;
         } else if (climaMounted && currentTemperature <= criticTemperature) {
             currentTemperature = criticTemperature;

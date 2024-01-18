@@ -11,7 +11,7 @@ public class Test {
         System.out.println(livingRoom.reduceTemperature());
         System.out.println(livingRoom.reduceTemperature());
         System.out.println(livingRoom.reduceTemperature());
-        System.out.println(livingRoom.reduceTemperature());
+//        System.out.println(livingRoom.reduceTemperature());
         System.out.println(livingRoom.currentTemperature);
 
     }
