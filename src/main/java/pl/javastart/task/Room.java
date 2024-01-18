@@ -1,10 +1,10 @@
 package pl.javastart.task;
 
 public class Room {
-    private double metricAre;
-    private double currentTemperature;
-    private boolean climaMounted;
-    private double criticTemperature;
+    public double metricAre;
+    public double currentTemperature;
+    public boolean climaMounted;
+    public double criticTemperature;
 
     public Room(double metricAre, double currentTemperature, double criticTemperature, boolean climaMounted) {
         this.metricAre = metricAre;
@@ -13,45 +13,13 @@ public class Room {
         this.climaMounted = climaMounted;
     }
 
-    public double getMetricAre() {
-        return metricAre;
-    }
-
-    private void setMetricAre(double metricAre) {
-        this.metricAre = metricAre;
-    }
-
-    public double getCurrentTemperature() {
-        return currentTemperature;
-    }
-
-    public void setCurrentTemperature(double currentTemperature) {
-        this.currentTemperature = currentTemperature;
-    }
-
-    public boolean isClimaMounted() {
-        return climaMounted;
-    }
-
-    public void setClimaMounted(boolean climaMounted) {
-        this.climaMounted = climaMounted;
-    }
-
-    public double getCriticTemperature() {
-        return criticTemperature;
-    }
-
-    public void setCriticTemperature(double criticTemperature) {
-        this.criticTemperature = criticTemperature;
-    }
-
     boolean reduceTemperature() {
-        if (climaMounted && currentTemperature > getCriticTemperature()) {
-            setCurrentTemperature(getCurrentTemperature() - 1);
+        if (climaMounted && currentTemperature > criticTemperature) {
+            currentTemperature = currentTemperature - 1;
             return true;
-        } else if (climaMounted && currentTemperature > getCriticTemperature() && currentTemperature == 21) {
-            setCurrentTemperature(21);
-            return true;
+        } else if (climaMounted && currentTemperature <= criticTemperature) {
+            currentTemperature = criticTemperature;
+            return false;
         } else {
             return false;
         }
